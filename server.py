@@ -15,7 +15,7 @@ parser.add_argument('--mask', default='/data/mask/case3_mask.png', type=str,
                     help='The filename of mask, value 255 indicates mask.')
 parser.add_argument('--output', default='/data/output/case3_output.png', type=str,
                     help='Where to write output.')
-parser.add_argument('--checkpoint_dir', default='/weights/inpainting/2020-10-11', type=str,
+parser.add_argument('--checkpoint_dir', default='weights/inpainting/2020-10-11', type=str,
                     help='The directory of tensorflow checkpoint.')
 
 
@@ -26,7 +26,9 @@ if __name__ == "__main__":
 
     model = InpaintCAModel()
     image = cv2.imread(args.image)
+    print("args.image", args.image)
     mask = cv2.imread(args.mask)
+    print("args.mask", args.mask)
     # mask = cv2.resize(mask, (0,0), fx=0.5, fy=0.5)
 
     assert image.shape == mask.shape
